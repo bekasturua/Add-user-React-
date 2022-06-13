@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
+import Wrapper from "../Helpers/Wrapper";
 import classes from "./AddUser.module.css";
 
 const AddUser = (props) => {
@@ -22,7 +23,7 @@ const AddUser = (props) => {
     if (+enteredAge < 1) {
       setError({
         title: "Invalid age",
-        message: "Please entere a valid age (>0)",
+        message: "Please enter a valid age (>0)",
       });
       return;
     }
@@ -44,9 +45,10 @@ const AddUser = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
+          key="error-modal"
           title={error.title}
           message={error.message}
           onConfirm={errorHandler}
@@ -71,7 +73,7 @@ const AddUser = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
